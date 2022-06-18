@@ -4,16 +4,16 @@ use rand_distr::{Normal, Standard};
 
 #[derive(Debug)]
 struct Point {
-    x: i32,
-    y: i32,
+    _x: i32,
+    _y: i32,
 }
 
 impl Distribution<Point> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Point {
         let (rand_x, rand_y) = rng.gen();
         Point {
-            x: rand_x,
-            y: rand_y,
+            _x: rand_x,
+            _y: rand_y,
         }
     }
 }
@@ -24,6 +24,7 @@ fn main() {
     let n1: u8 = rng.gen();
     let n2: u16 = rng.gen();
 
+  
     println!("Generate Random Numbers");
 
     println!("Random u8:    {}", n1);
@@ -76,12 +77,12 @@ fn main() {
                             abcdefghijklmnopqrstuvwxyz\
                             0123456789)(*&^%$#@!~";
     const PASSWORD_LEN: usize = 30;
-    let password:String=(0..PASSWORD_LEN)
-    .map(|_|{
-        let idx = rng.gen_range(0..CHARSET.len());
-        CHARSET[idx] as char
-    })
-    .collect();
+    let password: String = (0..PASSWORD_LEN)
+        .map(|_| {
+            let idx = rng.gen_range(0..CHARSET.len());
+            CHARSET[idx] as char
+        })
+        .collect();
 
-    println!("{:?}",password);
+    println!("{:?}", password);
 }
